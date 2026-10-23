@@ -1,0 +1,6 @@
+{
+  "name": "Universal Quotation Discord Bot",
+  "description": "Advanced multi-purpose pricing engine, commercial quotation system, and store management bot for Discord.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
