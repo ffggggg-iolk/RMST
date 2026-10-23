@@ -18,14 +18,27 @@ import * as dotenv from 'dotenv';
 import { defaultInteractionDispatcher } from '../bot/client';
 import { defaultDatabase } from '../database/Database';
 
+import { deploy } from './deploy-commands';
+
 dotenv.config();
 
 const TOKEN = process.env.DISCORD_BOT_TOKEN;
+const CLIENT_ID = process.env.DISCORD_CLIENT_ID;
 
-export function startDiscordBot() {
+export async function startDiscordBot() {
   if (!TOKEN) {
     console.log('ℹ️ DISCORD_BOT_TOKEN not provided. Bot gateway mode is idle. Web UI Simulator is fully active!');
     return null;
+  }
+
+  // Automatically sync slash commands on startup if CLIENT_ID is provided
+  if (CLIENT_ID) {
+    console.log('🚀 Synchronizing application commands on bot launch...');
+    try {
+      await deploy();
+    } catch (e) {
+      console.warn('Command synchronization warning:', e);
+    }
   }
 
   const client = new Client({

@@ -11,7 +11,8 @@
     "lint": "tsc --noEmit",
     "test": "tsx --test src/tests/*.test.ts",
     "deploy-commands": "tsx src/scripts/deploy-commands.ts",
-    "bot": "tsx src/scripts/run-bot.ts"
+    "bot": "tsx src/scripts/run-bot.ts",
+    "start": "tsx src/scripts/run-bot.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
